@@ -107,10 +107,6 @@
             transition: background-color 0.3s ease;
         }
 
-        .button-container a:hover {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
         .button-container a:first-child {
             border-color: #0077ff;
             box-shadow: 0 0 15px #0077ff;
@@ -118,6 +114,47 @@
 
         .button-container a:first-child:hover {
             background-color: rgba(0, 119, 255, 0.2);
+        }
+
+        .circle {
+            position: fixed;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 5px solid;
+            animation: rgb-circle 6s infinite;
+            filter: blur(20px);
+        }
+
+        .circle-1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 10%;
+            animation-duration: 6s;
+        }
+
+        .circle-2 {
+            width: 80px;
+            height: 80px;
+            top: 30%;
+            left: 50%;
+            animation-duration: 8s;
+        }
+
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 20%;
+            animation-duration: 7s;
+        }
+
+        .circle-4 {
+            width: 100px;
+            height: 100px;
+            top: 70%;
+            left: 80%;
+            animation-duration: 9s;
         }
 
         @keyframes rgb-border {
@@ -135,44 +172,19 @@
             }
         }
 
-        .circle {
-            position: fixed;
-            border-radius: 50%;
-            background-color: rgba(128, 0, 128, 1);
-            animation: float 10s infinite ease-in-out;
-            filter: blur(20px);
-        }
-
-        .circle-1 {
-            width: 120px;
-            height: 120px;
-            top: 10%;
-            left: 10%;
-            animation-duration: 12s;
-        }
-
-        .circle-2 {
-            width: 80px;
-            height: 80px;
-            top: 30%;
-            left: 50%;
-            animation-duration: 15s;
-        }
-
-        .circle-3 {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            left: 20%;
-            animation-duration: 18s;
-        }
-
-        .circle-4 {
-            width: 100px;
-            height: 100px;
-            top: 70%;
-            left: 80%;
-            animation-duration: 14s;
+        @keyframes rgb-circle {
+            0% {
+                border-color: rgb(0, 0, 255);
+            }
+            33% {
+                border-color: rgb(255, 0, 0);
+            }
+            66% {
+                border-color: rgb(0, 255, 0);
+            }
+            100% {
+                border-color: rgb(0, 0, 255);
+            }
         }
     </style>
 </head>
@@ -192,12 +204,12 @@
 
     <div class="container">
         <img src="banner.gif" alt="Banner" class="banner">
-        <h1>otosaka"1 bio</h1>
+        <h1>otosaka bio</h1>
         <p><strong>Имя:</strong>Мирон</p>
         <p><strong>Сколько лет:</strong>15 лет</p>
         <p><strong>Языки:</strong>Русский, частично Английский</p>
         <p><strong>Хобби/Описание:</strong>Новичок в мире юзерботов и кодов, и, честно говоря, еще только начинаю разбираться в этом всём. Раньше думал, что программирование — это что-то очень сложное и непонятное, но с каждым днем я понимаю всё больше.</p>
-        <p class="bold">Пока-Пока♡!&lt;!&gt;</p>
+        <p class="bold">Пока-Пока♡!</p>
     </div>
 
     <div class="button-container">
