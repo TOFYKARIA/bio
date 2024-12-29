@@ -28,8 +28,8 @@
             text-align: center;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(15px);
-            border: 2px solid #333;
-            animation: fadeInScale 1s ease-in-out;
+            border: 5px solid;
+            animation: rgb-border 3s infinite;
         }
 
         .banner {
@@ -37,6 +37,8 @@
             height: auto;
             border-radius: 15px;
             margin: 20px;
+            border: 5px solid;
+            animation: rgb-border 3s infinite;
         }
 
         h1 {
@@ -100,8 +102,8 @@
             font-weight: bold;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            border: 2px solid #333;
-            backdrop-filter: blur(15px);
+            border: 5px solid;
+            animation: rgb-border 3s infinite;
             transition: background-color 0.3s ease;
         }
 
@@ -111,7 +113,7 @@
 
         .bubble-container {
             position: fixed;
-            bottom: 0;
+            bottom: 50px;
             left: 0;
             width: 150px;
             height: 100%;
@@ -150,6 +152,21 @@
         .bubble:nth-child(6) { left: 60%; animation-duration: 5.5s; }
         .bubble:nth-child(7) { left: 70%; animation-duration: 4.8s; }
         .bubble:nth-child(8) { left: 80%; animation-duration: 5.2s; }
+
+        @keyframes rgb-border {
+            0% {
+                border-color: rgb(255, 0, 0);
+            }
+            33% {
+                border-color: rgb(0, 255, 0);
+            }
+            66% {
+                border-color: rgb(0, 0, 255);
+            }
+            100% {
+                border-color: rgb(255, 0, 0);
+            }
+        }
 
         .circle {
             position: fixed;
@@ -262,12 +279,4 @@
             currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
             music.src = tracks[currentTrackIndex];
             isPlaying = false;
-            toggleMusic();
-        }
-
-        window.onload = () => {
-            window.scrollTo(0, 0);
-        };
-    </script>
-</body>
-</html>
+            toggle
