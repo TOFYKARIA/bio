@@ -111,48 +111,6 @@
             background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .bubble-container {
-            position: fixed;
-            bottom: 50px;
-            left: 0;
-            width: 150px;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .bubble {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: rgba(128, 0, 128, 0.8);
-            animation: bubble-animation 4s infinite ease-in-out;
-        }
-
-        @keyframes bubble-animation {
-            0% {
-                transform: translateY(100%) translateX(0);
-                opacity: 0.8;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100%) translateX(20px);
-                opacity: 0;
-            }
-        }
-
-        .bubble:nth-child(1) { left: 10%; animation-duration: 3s; }
-        .bubble:nth-child(2) { left: 20%; animation-duration: 4s; }
-        .bubble:nth-child(3) { left: 30%; animation-duration: 5s; }
-        .bubble:nth-child(4) { left: 40%; animation-duration: 3.5s; }
-        .bubble:nth-child(5) { left: 50%; animation-duration: 4.5s; }
-        .bubble:nth-child(6) { left: 60%; animation-duration: 5.5s; }
-        .bubble:nth-child(7) { left: 70%; animation-duration: 4.8s; }
-        .bubble:nth-child(8) { left: 80%; animation-duration: 5.2s; }
-
         @keyframes rgb-border {
             0% {
                 border-color: rgb(255, 0, 0);
@@ -215,17 +173,6 @@
     <div class="circle circle-3"></div>
     <div class="circle circle-4"></div>
 
-    <div class="bubble-container">
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-    </div>
-
     <div class="music-controls">
         <button class="music-button" onclick="previousTrack()">⏮️</button>
         <button class="music-button" onclick="toggleMusic()">▶️</button>
@@ -279,4 +226,12 @@
             currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
             music.src = tracks[currentTrackIndex];
             isPlaying = false;
-            toggle
+            toggleMusic();
+        }
+
+        window.onload = () => {
+            window.scrollTo(0, 0);
+        };
+    </script>
+</body>
+</html>
