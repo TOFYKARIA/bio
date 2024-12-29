@@ -30,8 +30,8 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(15px);
             border: 5px solid;
-            animation: rgb-sync 15s infinite linear;
-            z-index: 2; /* Поверх кружков */
+            animation: rgb-sync 8s infinite linear;
+            z-index: 2;
             position: relative;
         }
 
@@ -41,8 +41,8 @@
             border-radius: 15px;
             margin: 20px;
             border: 5px solid;
-            animation: rgb-sync 15s infinite linear;
-            z-index: 2; /* Поверх кружков */
+            animation: rgb-sync 8s infinite linear;
+            z-index: 2;
             position: relative;
         }
 
@@ -103,7 +103,7 @@
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
             border: 5px solid;
-            animation: rgb-sync 15s infinite linear;
+            animation: rgb-sync 8s infinite linear;
             transition: background-color 0.3s ease;
         }
 
@@ -114,14 +114,14 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 1; /* За текстом и баннером */
+            z-index: 1;
         }
 
         .circle {
             position: absolute;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-            animation: rgb-sync 15s infinite linear;
+            animation: rgb-sync 8s infinite linear;
             filter: blur(15px);
         }
 
@@ -132,18 +132,27 @@
 
         @keyframes rgb-sync {
             0% {
+                border-color: rgb(255, 0, 0);
                 background: radial-gradient(circle, rgba(255, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
             }
-            25% {
+            20% {
+                border-color: rgb(255, 165, 0);
                 background: radial-gradient(circle, rgba(255, 165, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
             }
-            50% {
+            40% {
+                border-color: rgb(255, 255, 0);
+                background: radial-gradient(circle, rgba(255, 255, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+            }
+            60% {
+                border-color: rgb(0, 255, 0);
                 background: radial-gradient(circle, rgba(0, 255, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
             }
-            75% {
+            80% {
+                border-color: rgb(0, 0, 255);
                 background: radial-gradient(circle, rgba(0, 0, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
             }
             100% {
+                border-color: rgb(255, 0, 255);
                 background: radial-gradient(circle, rgba(255, 0, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
             }
         }
@@ -172,12 +181,9 @@
         <p><strong>Сколько лет:</strong>15 лет</p>
         <p><strong>Языки:</strong>Русский, частично Английский</p>
         <p><strong>Хобби/Описание:</strong>Новичок в мире юзерботов и кодов, и, честно говоря, еще только начинаю разбираться в этом всём. Раньше думал, что программирование — это что-то очень сложное и непонятное, но с каждым днем я понимаю всё больше.</p>
-        <p class="bold">Пока-Пока♡</p>
+        <p class="bold">Пока-Пока♡!&lt;!&gt;</p>
     </div>
 
     <div class="button-container">
         <a href="https://m.vk.com/otosaka" target="_blank">VK</a>
-        <a href="https://tofykaria.github.io/" target="_blank">Мой очень интересный сайт :3</a>
-    </div>
-</body>
-</html>
+        <a href
