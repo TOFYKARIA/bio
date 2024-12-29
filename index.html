@@ -109,67 +109,47 @@
             background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .small-circles {
+        .bubble-container {
             position: fixed;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 150px;
-            height: 150px;
+            height: 100%;
             overflow: hidden;
             z-index: 1;
         }
 
-        .small-circle {
+        .bubble {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background-color: rgba(128, 0, 128, 0.8);
-            animation: flow 3s infinite linear;
+            animation: bubble-animation 4s infinite ease-in-out;
         }
 
-        @keyframes flow {
+        @keyframes bubble-animation {
             0% {
-                transform: translateY(150px) translateX(0);
+                transform: translateY(100%) translateX(0);
                 opacity: 0.8;
             }
-            100% {
-                transform: translateY(-150px) translateX(150px);
-                opacity: 0.6;
-            }
-        }
-
-        .small-circle:nth-child(1) { left: 0; animation-delay: 0s; }
-        .small-circle:nth-child(2) { left: 20px; animation-delay: 0.2s; }
-        .small-circle:nth-child(3) { left: 40px; animation-delay: 0.4s; }
-        .small-circle:nth-child(4) { left: 60px; animation-delay: 0.6s; }
-        .small-circle:nth-child(5) { left: 80px; animation-delay: 0.8s; }
-        .small-circle:nth-child(6) { left: 100px; animation-delay: 1s; }
-        .small-circle:nth-child(7) { left: 120px; animation-delay: 1.2s; }
-        .small-circle:nth-child(8) { left: 140px; animation-delay: 1.4s; }
-
-        @keyframes fadeInScale {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
+            50% {
                 opacity: 1;
             }
+            100% {
+                transform: translateY(-100%) translateX(20px);
+                opacity: 0;
+            }
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            50% {
-                transform: translateY(-100px) translateX(100px);
-            }
-            100% {
-                transform: translateY(0) translateX(0);
-            }
-        }
+        .bubble:nth-child(1) { left: 10%; animation-duration: 3s; }
+        .bubble:nth-child(2) { left: 20%; animation-duration: 4s; }
+        .bubble:nth-child(3) { left: 30%; animation-duration: 5s; }
+        .bubble:nth-child(4) { left: 40%; animation-duration: 3.5s; }
+        .bubble:nth-child(5) { left: 50%; animation-duration: 4.5s; }
+        .bubble:nth-child(6) { left: 60%; animation-duration: 5.5s; }
+        .bubble:nth-child(7) { left: 70%; animation-duration: 4.8s; }
+        .bubble:nth-child(8) { left: 80%; animation-duration: 5.2s; }
 
         .circle {
             position: fixed;
@@ -218,15 +198,15 @@
     <div class="circle circle-3"></div>
     <div class="circle circle-4"></div>
 
-    <div class="small-circles">
-        <div class="small-circle"></div>
-        <div class="small-circle"></div>
-        <div class="small-circle"></div>
-        <div class="small-circle"></div>
-        <div class="small-circle"></div>
-        <div class="small-circle"></div>
-        <div class="small-circle"></div>
-        <div class="small-circle"></div>
+    <div class="bubble-container">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
     </div>
 
     <div class="music-controls">
