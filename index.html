@@ -60,7 +60,7 @@
             top: 10px;
             left: 10px;
             display: flex;
-            gap: 5px; /* Уменьшение расстояния между кнопками */
+            gap: 2px; /* Почти вплотную */
             z-index: 10;
         }
 
@@ -234,6 +234,11 @@
             isPlaying = false;
             toggleMusic();
         }
+
+        // Прокрутка страницы наверх при загрузке
+        window.onload = () => {
+            window.scrollTo(0, 0);
+        };
     </script>
 </body>
 </html>
