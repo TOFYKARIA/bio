@@ -29,7 +29,7 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(15px);
             border: 5px solid;
-            animation: rgb-sync 10s infinite;
+            animation: rgb-sync 15s infinite linear;
         }
 
         .banner {
@@ -38,7 +38,7 @@
             border-radius: 15px;
             margin: 20px;
             border: 5px solid;
-            animation: rgb-sync 10s infinite;
+            animation: rgb-sync 15s infinite linear;
         }
 
         h1 {
@@ -103,7 +103,7 @@
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
             border: 5px solid;
-            animation: rgb-sync 10s infinite;
+            animation: rgb-sync 15s infinite linear;
             transition: background-color 0.3s ease;
         }
 
@@ -120,7 +120,7 @@
             position: fixed;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 0) 70%);
-            animation: rgb-sync 10s infinite;
+            animation: rgb-sync 15s infinite linear;
             filter: blur(10px);
         }
 
@@ -157,17 +157,21 @@
                 border-color: rgb(255, 0, 0);
                 background: radial-gradient(circle, rgba(255, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
             }
-            33% {
+            25% {
+                border-color: rgb(255, 255, 0);
+                background: radial-gradient(circle, rgba(255, 255, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
+            }
+            50% {
                 border-color: rgb(0, 255, 0);
                 background: radial-gradient(circle, rgba(0, 255, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
             }
-            66% {
-                border-color: rgb(0, 0, 255);
-                background: radial-gradient(circle, rgba(0, 0, 255, 1) 0%, rgba(0, 0, 0, 0) 70%);
+            75% {
+                border-color: rgb(0, 255, 255);
+                background: radial-gradient(circle, rgba(0, 255, 255, 1) 0%, rgba(0, 0, 0, 0) 70%);
             }
             100% {
-                border-color: rgb(255, 0, 0);
-                background: radial-gradient(circle, rgba(255, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
+                border-color: rgb(255, 0, 255);
+                background: radial-gradient(circle, rgba(255, 0, 255, 1) 0%, rgba(0, 0, 0, 0) 70%);
             }
         }
     </style>
