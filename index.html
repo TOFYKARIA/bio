@@ -60,7 +60,7 @@
             top: 10px;
             left: 10px;
             display: flex;
-            gap: 10px;
+            gap: 5px; /* Уменьшение расстояния между кнопками */
             z-index: 10;
         }
 
@@ -75,6 +75,38 @@
 
         .music-button:hover {
             transform: scale(1.2);
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 80%;
+            max-width: 500px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            width: 100%;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            border: 2px solid #333;
+            backdrop-filter: blur(15px);
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container a:hover {
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         .circle {
@@ -163,6 +195,11 @@
         <p><strong>Языки:</strong>Русский, частично Английский</p>
         <p><strong>Хобби/Описание:</strong>Новичок в мире юзерботов и кодов, и, честно говоря, еще только начинаю разбираться в этом всём. Раньше думал, что программирование — это что-то очень сложное и непонятное, но с каждым днем я понимаю всё больше.</p>
         <p class="bold">Пока-Пока♡!&lt;!&gt;</p>
+    </div>
+
+    <div class="button-container">
+        <a href="https://m.vk.com/otosaka" target="_blank">VK</a>
+        <a href="https://tofykaria.github.io/" target="_blank">Мой очень интересный сайт :3</a>
     </div>
 
     <script>
