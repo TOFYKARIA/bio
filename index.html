@@ -190,6 +190,38 @@
     </div>
 
     <script>
+        const tracks = ["ojk.mp3", "opx.mp3"];
+        let currentTrackIndex = 0;
+        let isPlaying = false;
+
+        const music = document.getElementById("music");
+        music.src = tracks[currentTrackIndex];
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                document.querySelector(".music-controls button:nth-child(2)").textContent = "▶️";
+            } else {
+                music.play();
+                document.querySelector(".music-controls button:nth-child(2)").textContent = "⏸️";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function nextTrack() {
+            currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+            music.src = tracks[currentTrackIndex];
+            isPlaying = false;
+            toggleMusic();
+        }
+
+        function previousTrack() {
+            currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+            music.src = tracks[currentTrackIndex];
+            isPlaying = false;
+            toggleMusic();
+        }
+
         const snowContainer = document.getElementById('snow-container');
 
         function createSnowflakes() {
