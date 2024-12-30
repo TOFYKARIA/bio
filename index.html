@@ -19,7 +19,7 @@
             position: relative;
         }
 
-        .container {    
+        .container {
             background-color: rgba(0, 0, 0, 0.3);
             border-radius: 15px;
             padding: 20px;
@@ -35,17 +35,6 @@
             position: relative;
         }
 
-        .banner {
-            width: calc(100% - 40px);
-            height: auto;
-            border-radius: 15px;
-            margin: 20px;
-            border: 5px solid;
-            animation: rgb-sync 12s infinite linear;
-            z-index: 2;
-            position: relative;
-        }
-
         h1, p {
             z-index: 2;
             position: relative;
@@ -54,6 +43,15 @@
         .bold {
             font-weight: bold;
             font-size: 18px;
+        }
+
+        .banner {
+            width: calc(100% - 40px);
+            height: auto;
+            border-radius: 15px;
+            margin: 20px;
+            border: 5px solid;
+            animation: rgb-sync 12s infinite linear;
         }
 
         .music-menu-toggle {
@@ -131,11 +129,6 @@
             margin-top: 5px;
         }
 
-        .current-song {
-            font-size: 16px;
-            color: white;
-        }
-
         .button-container {
             display: flex;
             flex-direction: column;
@@ -166,73 +159,31 @@
         }
 
         @keyframes rgb-sync {
-            0% {
-                border-color: rgb(255, 0, 0);
-                background: radial-gradient(circle, rgba(255, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-            }
-            20% {
-                border-color: rgb(255, 105, 180);
-                background: radial-gradient(circle, rgba(255, 105, 180, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-            }
-            40% {
-                border-color: rgb(255, 165, 0);
-                background: radial-gradient(circle, rgba(255, 165, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-            }
-            60% {
-                border-color: rgb(255, 255, 0);
-                background: radial-gradient(circle, rgba(255, 255, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-            }
-            80% {
-                border-color: rgb(255, 20, 147);
-                background: radial-gradient(circle, rgba(255, 20, 147, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-            }
-            100% {
-                border-color: rgb(255, 0, 0);
-                background: radial-gradient(circle, rgba(255, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-            }
-        }
-
-        #snow-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1000;
+            0% { border-color: rgb(0, 128, 255); }
+            20% { border-color: rgb(0, 255, 128); }
+            40% { border-color: rgb(255, 128, 0); }
+            60% { border-color: rgb(128, 0, 255); }
+            80% { border-color: rgb(255, 0, 128); }
+            100% { border-color: rgb(0, 128, 255); }
         }
 
         .snowflake {
-            position: absolute;
+            position: fixed;
             top: -10px;
-            width: 5px;
-            height: 5px;
-            background-color: white;
-            border-radius: 50%;
-            opacity: 0.8;
+            color: white;
+            font-size: 1em;
+            pointer-events: none;
+            z-index: 3;
             animation: fall linear infinite;
         }
 
-        .snowflake:nth-child(odd) {
-            width: 7px;
-            height: 7px;
-            opacity: 0.6;
-        }
-
         @keyframes fall {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) translateX(50px);
-                opacity: 0;
-            }
+            0% { transform: translateX(0) translateY(0); opacity: 1; }
+            100% { transform: translateX(var(--end-x)) translateY(100vh); opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <div id="snow-container"></div>
     <button class="music-menu-toggle" onclick="toggleMenu()">📤</button>
 
     <div class="music-controls" id="music-controls">
@@ -253,15 +204,13 @@
         </div>
     </div>
 
-    <audio id="music"></audio>
-
     <div class="container">
         <img src="banner.gif" alt="Banner" class="banner">
         <h1>Приветик!</h1>
-        <p><strong>Меня зовут:</strong>Мирон</p>
-        <p><strong>Мне:</strong>15</p>
-        <p><strong>Знаю языки:</strong>Русский, частично Английский</p>
-        <p><strong>Описание:</strong>Живем-дальше увидим</p>
+        <p><strong>Меня зовут:</strong> Мирон</p>
+        <p><strong>Мне:</strong> 15</p>
+        <p><strong>Знаю языки:</strong> Русский, частично Английский</p>
+        <p><strong>Описание:</strong> Живем-дальше увидим</p>
         <p class="bold">Пока-Пока♡</p>
     </div>
 
@@ -275,26 +224,23 @@
         let currentTrackIndex = 0;
         let isPlaying = false;
 
-        const music = document.getElementById("music");
+        const music = document.createElement("audio");
+        music.src = tracks[currentTrackIndex];
         const currentSong = document.getElementById("current-song");
         const progressBar = document.getElementById("progress-bar");
-        const musicControls = document.getElementById("music-controls");
-        const toggleMenuButton = document.querySelector(".music-menu-toggle");
-        const currentTime = document.getElementById("current-time");
-        const totalTime = document.getElementById("total-time");
-
-        music.src = tracks[currentTrackIndex];
-        currentSong.textContent = tracks[currentTrackIndex];
+        const currentTimeEl = document.getElementById("current-time");
+        const totalTimeEl = document.getElementById("total-time");
 
         music.addEventListener("timeupdate", updateProgressBar);
         music.addEventListener("loadedmetadata", () => {
-            totalTime.textContent = formatTime(music.duration);
+            totalTimeEl.textContent = formatTime(music.duration);
         });
 
         function toggleMenu() {
-            const isVisible = musicControls.style.display === "flex";
-            musicControls.style.display = isVisible ? "none" : "flex";
-            toggleMenuButton.textContent = isVisible ? "📤" : "📥";
+            const menu = document.getElementById("music-controls");
+            const isVisible = menu.style.display === "flex";
+            menu.style.display = isVisible ? "none" : "flex";
+            document.querySelector(".music-menu-toggle").textContent = isVisible ? "📤" : "📥";
         }
 
         function toggleMusic() {
@@ -308,34 +254,10 @@
             isPlaying = !isPlaying;
         }
 
-        function nextTrack() {
-            currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
-            music.src = tracks[currentTrackIndex];
-            currentSong.textContent = tracks[currentTrackIndex];
-            isPlaying = false;
-            toggleMusic();
-        }
-
-        function previousTrack() {
-            currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
-            music.src = tracks[currentTrackIndex];
-            currentSong.textContent = tracks[currentTrackIndex];
-            isPlaying = false;
-            toggleMusic();
-        }
-
         function updateProgressBar() {
             const progress = (music.currentTime / music.duration) * 100;
-            progressBar.style.width = progress + "%";
-            currentTime.textContent = formatTime(music.currentTime);
-        }
-
-        function seekTrack(event) {
-            const progressContainer = event.currentTarget;
-            const offsetX = event.offsetX;
-            const totalWidth = progressContainer.offsetWidth;
-            const percentage = offsetX / totalWidth;
-            music.currentTime = music.duration * percentage;
+            progressBar.style.width = `${progress}%`;
+            currentTimeEl.textContent = formatTime(music.currentTime);
         }
 
         function formatTime(seconds) {
@@ -344,20 +266,45 @@
             return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
         }
 
-        const snowContainer = document.getElementById("snow-container");
-
-        function createSnowflakes() {
-            for (let i = 0; i < 50; i++) {
-                const snowflake = document.createElement("div");
-                snowflake.className = "snowflake";
-                snowflake.style.left = Math.random() * 100 + "vw";
-                snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
-                snowflake.style.animationDelay = Math.random() * 10 + "s";
-                snowContainer.appendChild(snowflake);
-            }
+        function previousTrack() {
+            currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+            loadTrack();
         }
 
-        createSnowflakes();
+        function nextTrack() {
+            currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+            loadTrack();
+        }
+
+        function loadTrack() {
+            music.src = tracks[currentTrackIndex];
+            currentSong.textContent = tracks[currentTrackIndex];
+            if (isPlaying) music.play();
+        }
+
+        const snowflakeCount = 50;
+        const snowContainer = document.createElement('div');
+        document.body.appendChild(snowContainer);
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.textContent = '🎊';
+            snowflake.className = 'snowflake';
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
+            snowflake.style.setProperty('--end-x', `${Math.random() * 200 - 100}px`);
+            snowContainer.appendChild(snowflake);
+
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+                createSnowflake();
+            });
+        }
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            createSnowflake();
+        }
     </script>
 </body>
 </html>
